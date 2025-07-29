@@ -5,63 +5,92 @@
   <title>سایت بنیامین</title>
   <style>
     body {
-      direction: rtl;
-      font-family: Tahoma, sans-serif;
+      font-family: 'Vazir', sans-serif;
       margin: 0;
       padding: 0;
-      scroll-behavior: smooth;
+      direction: rtl;
+      background-color: #f5f5f5;
     }
 
     nav {
-      background-color: #f8f8f8;
-      padding: 15px;
+      background-color: #333;
+      color: white;
+      padding: 15px 0;
       position: fixed;
       top: 0;
       width: 100%;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      z-index: 999;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     nav a {
-      margin: 0 15px;
+      color: white;
+      margin: 0 20px;
       text-decoration: none;
-      color: #333;
       font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
     }
 
     section {
-      padding: 100px 20px;
-      margin-top: 70px;
+      padding: 100px 20px 60px;
+      min-height: 100vh;
       border-bottom: 1px solid #ddd;
     }
 
     h2 {
-      color: #555;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
     }
   </style>
 </head>
 <body>
 
+  <!-- منوی بالا -->
   <nav>
+    <a href="#home">خانه</a>
     <a href="#about">درباره ما</a>
-    <a href="#products">پوشاک</a>
+    <a href="#products">محصولات</a>
     <a href="#contact">تماس با ما</a>
   </nav>
 
+  <!-- بخش‌ها -->
+  <section id="home">
+    <h2>سلام! این سایت بنیامینه</h2>
+    <p>به سایت من خوش اومدی. بزودی فعال میشه...</p>
+  </section>
+
   <section id="about">
     <h2>درباره ما</h2>
-    <p>به سایت بنیامین خوش اومدی! اینجا قراره بهترین محصولات رو پیدا کنی.</p>
+    <p>اینجا می‌تونی اطلاعاتی درباره ما ببینی.</p>
   </section>
 
   <section id="products">
-    <h2>پوشاک</h2>
-    <p>در این قسمت انواع لباس و کفش و پوشاک می‌ذاریم.</p>
+    <h2>محصولات</h2>
+    <p>لیست محصولات در این بخش قرار می‌گیره.</p>
   </section>
 
   <section id="contact">
     <h2>تماس با ما</h2>
-    <p>برای ارتباط با ما، ایمیل بزن به: benyamin@example.com</p>
+    <p>میتونی با ما تماس بگیری از این بخش.</p>
   </section>
+
+  <footer>
+    تمامی حقوق محفوظ است © بنیامین
+  </footer>
 
 </body>
 </html>
+
+

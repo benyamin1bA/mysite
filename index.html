@@ -1,121 +1,109 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>آیوارا</title>
-  <!-- فونت فارسی -->
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
-  <!-- آیکون‌ها -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>منوی همبرگری</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Vazirmatn', sans-serif;
-      background: #f5f5f5;
-    }
-
-    header {
-      background-color: #ff5e00;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      position: relative;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .menu-icon {
-      font-size: 24px;
-      cursor: pointer;
-      display: none;
-    }
-
-    nav ul {
-      list-style: none;
+      font-family: Vazir, Tahoma, sans-serif;
       margin: 0;
       padding: 0;
-      display: flex;
-      gap: 25px;
+      background-color: #f4f4f4;
     }
-
+    header {
+      background-color: #0077cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .menu-toggle {
+      display: none;
+    }
+    nav {
+      background-color: #005fa3;
+      overflow: hidden;
+      text-align: center;
+    }
     nav a {
       color: white;
       text-decoration: none;
-      font-size: 16px;
-      transition: 0.3s;
+      display: inline-block;
+      padding: 14px 20px;
+      font-weight: bold;
     }
-
     nav a:hover {
-      text-decoration: underline;
+      background-color: #004080;
     }
 
-    /* موبایل */
-    @media (max-width: 768px) {
-      .menu-icon {
+    /* بخش منوی همبرگری برای موبایل */
+    @media screen and (max-width: 768px) {
+      nav {
+        display: none;
+        width: 100%;
+      }
+      .menu-toggle {
+        display: block;
+        background-color: #005fa3;
+        padding: 14px 20px;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+      }
+      nav.active {
         display: block;
       }
-
-      nav {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #ff5e00;
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-        z-index: 99;
-        animation: slide 0.3s ease-out;
-      }
-
-      nav.open {
-        display: flex;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      @keyframes slide {
-        from {opacity: 0; transform: translateY(-10px);}
-        to {opacity: 1; transform: translateY(0);}
-      }
+    }
+    main {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
     }
   </style>
 </head>
-
 <body>
 
   <header>
-    <div class="logo">آیوارا</div>
-    <div class="menu-icon" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </div>
-    <nav id="mainNav">
-      <ul>
-        <li><a href="#home">خانه</a></li>
-        <li><a href="#about">درباره ما</a></li>
-        <li><a href="tel:09169730478">تماس با ما</a></li>
-      </ul>
-    </nav>
+    <h1>منوی همبرگری در سایت</h1>
   </header>
+
+  <!-- دکمه منوی همبرگری -->
+  <div class="menu-toggle" onclick="toggleMenu()">☰ منو</div>
+
+  <!-- منوی ناوبری -->
+  <nav id="nav-menu">
+    <a href="#">خانه</a>
+    <a href="#">درباره ما</a>
+    <a href="#">خدمات</a>
+    <a href="#">تماس با ما</a>
+  </nav>
+
+  <main>
+    <h2>درباره سایت</h2>
+    <p>این یک نمونه از منوی همبرگری است که روی موبایل و دسکتاپ به خوبی کار می‌کند. بر روی "منو" کلیک کنید تا منوی ناوبری ظاهر شود.</p>
+  </main>
+
+  <footer>
+    © ۲۰۲۵ تمامی حقوق محفوظ است.
+  </footer>
 
   <script>
     function toggleMenu() {
-      document.getElementById("mainNav").classList.toggle("open");
+      var menu = document.getElementById('nav-menu');
+      menu.classList.toggle('active');
     }
   </script>
 
 </body>
 </html>
- 

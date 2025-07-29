@@ -1,107 +1,250 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>منوی همبرگری</title>
+  <title>سایت من</title>
   <style>
+    :root {
+      --primary: #0077cc;
+      --bg: #fff;
+      --text: #000;
+    }
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #f4f4f4;
+    }
+
     body {
-      font-family: Vazir, Tahoma, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      font-family: Tahoma, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
     }
+
     header {
-      background-color: #0077cc;
+      background-color: var(--primary);
       color: white;
       padding: 20px;
       text-align: center;
     }
+
     .menu-toggle {
       display: none;
+      background: var(--primary);
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
     }
+
     nav {
       background-color: #005fa3;
-      overflow: hidden;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
+
     nav a {
       color: white;
       text-decoration: none;
-      display: inline-block;
       padding: 14px 20px;
-      font-weight: bold;
+      display: block;
     }
+
     nav a:hover {
       background-color: #004080;
     }
 
-    /* بخش منوی همبرگری برای موبایل */
     @media screen and (max-width: 768px) {
       nav {
         display: none;
-        width: 100%;
+        flex-direction: column;
+      }
+      nav.active {
+        display: flex;
       }
       .menu-toggle {
         display: block;
-        background-color: #005fa3;
-        padding: 14px 20px;
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
-        text-align: center;
-      }
-      nav.active {
-        display: block;
       }
     }
+
     main {
-      padding: 40px 20px;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ccc;
+      padding: 20px;
     }
+
+    section {
+      margin-bottom: 50px;
+      padding: 20px;
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    /* اسلایدر ساده */
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
+
+    .slider img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      scroll-snap-align: center;
+      margin: 0 10px;
+      border-radius: 10px;
+    }
+
+    /* گالری */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* سوالات متداول */
+    .faq summary {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* دکمه بالا */
+    #topBtn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* حالت تیره */
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
     footer {
       background-color: #333;
       color: white;
       text-align: center;
       padding: 15px;
-      margin-top: 40px;
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>منوی همبرگری در سایت</h1>
+    <h1>سایت من</h1>
   </header>
 
-  <!-- دکمه منوی همبرگری -->
   <div class="menu-toggle" onclick="toggleMenu()">☰ منو</div>
 
-  <!-- منوی ناوبری -->
   <nav id="nav-menu">
-    <a href="#">خانه</a>
-    <a href="#">درباره ما</a>
-    <a href="#">خدمات</a>
-    <a href="#">تماس با ما</a>
+    <a href="#slider">اسلایدر</a>
+    <a href="#portfolio">نمونه کار</a>
+    <a href="#faq">سوالات</a>
+    <a href="#contact">تماس با ما</a>
   </nav>
 
+  <button class="dark-toggle" onclick="toggleTheme()">🌓</button>
+
   <main>
-    <h2>درباره سایت</h2>
-    <p>این یک نمونه از منوی همبرگری است که روی موبایل و دسکتاپ به خوبی کار می‌کند. بر روی "منو" کلیک کنید تا منوی ناوبری ظاهر شود.</p>
+
+    <section id="slider">
+      <h2>اسلایدر</h2>
+      <div class="slider">
+        <img src="https://via.placeholder.com/300x200?text=1" alt="1">
+        <img src="https://via.placeholder.com/300x200?text=2" alt="2">
+        <img src="https://via.placeholder.com/300x200?text=3" alt="3">
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <h2>نمونه کارها</h2>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/150?text=پروژه+1" alt="">
+        <img src="https://via.placeholder.com/150?text=پروژه+2" alt="">
+        <img src="https://via.placeholder.com/150?text=پروژه+3" alt="">
+        <img src="https://via.placeholder.com/150?text=پروژه+4" alt="">
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2>سوالات متداول</h2>
+      <details>
+        <summary>چطور با شما تماس بگیریم؟</summary>
+        <p>از بخش تماس با ما یا شماره پایین صفحه.</p>
+      </details>
+      <details>
+        <summary>آیا این سایت واکنش‌گرا است؟</summary>
+        <p>بله، روی گوشی و دسکتاپ به خوبی کار می‌کند.</p>
+      </details>
+    </section>
+
+    <section id="contact">
+      <h2>تماس با ما</h2>
+      <form>
+        <label>نام شما:</label><br>
+        <input type="text" required><br><br>
+
+        <label>ایمیل:</label><br>
+        <input type="email" value="mysite12345678gg@gmail.com" readonly><br><br>
+
+        <label>پیام:</label><br>
+        <textarea required></textarea><br><br>
+
+        <button type="submit">ارسال</button>
+      </form>
+      <p>شماره تماس: 09169730478</p>
+    </section>
+
   </main>
 
   <footer>
-    © ۲۰۲۵ تمامی حقوق محفوظ است.
+    © تمامی حقوق محفوظ است - ۲۰۲۵
   </footer>
+
+  <button onclick="scrollToTop()" id="topBtn">⬆</button>
 
   <script>
     function toggleMenu() {
-      var menu = document.getElementById('nav-menu');
-      menu.classList.toggle('active');
+      document.getElementById('nav-menu').classList.toggle('active');
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.onscroll = function () {
+      document.getElementById("topBtn").style.display = window.scrollY > 200 ? "block" : "none";
+    };
+
+    function toggleTheme() {
+      document.body.dataset.theme = document.body.dataset.theme === "dark" ? "" : "dark";
     }
   </script>
 

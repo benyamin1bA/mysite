@@ -1,114 +1,109 @@
-<!DOCTYPE html><html lang="fa" dir="rtl">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>رادوین</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>سایت من</title>
   <style>
     body {
-      font-family: 'Vazirmatn', sans-serif;
       margin: 0;
-      background-color: #fefefe;
-      scroll-behavior: smooth;
+      font-family: 'Vazir', sans-serif;
+      background: #fff;
+      color: #333;
     }
-    header {
-      background: linear-gradient(to left, #2e2e2e, #1a1a1a);
-      color: white;
-      padding: 1rem 2rem;
+
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
+      background: #222;
+      padding: 10px 20px;
+      position: fixed;
       top: 0;
+      width: 100%;
       z-index: 1000;
     }
-    .logo {
+
+    .hamburger {
+      cursor: pointer;
       display: flex;
-      align-items: center;
-      font-weight: bold;
-      font-size: 1.5rem;
+      flex-direction: column;
+      gap: 5px;
     }
-    .logo i {
-      margin-left: 8px;
-      color: gold;
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: cyan;
+      border-radius: 3px;
     }
-    nav {
+
+    .menu {
+      display: none;
+      flex-direction: column;
+      background: #111;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 250px;
+      height: 100%;
+      padding: 20px;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    }
+
+    .menu.active {
       display: flex;
-      gap: 1.5rem;
     }
-    nav a {
+
+    .menu a {
+      color: white;
       text-decoration: none;
-      color: white;
-      transition: color 0.3s;
+      padding: 12px 0;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    nav a:hover {
-      color: #00d1b2;
+
+    .menu a:hover {
+      color: cyan;
     }
-    section {
-      padding: 4rem 2rem;
-    }
-    section:nth-child(even) {
-      background-color: #f5f5f5;
-    }
-    .section-title {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-    .hero {
-      text-align: center;
-    }
-    .hero img {
-      max-width: 100%;
-      height: auto;
-      margin-top: 1rem;
-    }
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 2rem;
+
+    .content {
+      padding: 100px 20px 20px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <i class="fas fa-crown"></i> رادوین
+
+  <div class="navbar">
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    <nav>
-      <a href="#home"><i class="fas fa-home"></i> صفحه اصلی</a>
-      <a href="#shop"><i class="fas fa-store"></i> فروشگاه</a>
-      <a href="#services"><i class="fas fa-cogs"></i> خدمات</a>
-      <a href="#articles"><i class="fas fa-newspaper"></i> مقالات</a>
-      <a href="#portfolio"><i class="fas fa-briefcase"></i> نمونه کارها</a>
-      <a href="#contact"><i class="fas fa-phone"></i> تماس با ما</a>
-      <a href="#about"><i class="fas fa-users"></i> درباره ما</a>
-    </nav>
-  </header>  <section id="home" class="hero">
-    <h1 class="section-title">به رادوین خوش آمدید</h1>
-    <p>ما با بهره‌گیری از خلاقیت، نوآوری و تکنولوژی، خدماتی متفاوت در زمینه طراحی، توسعه و دیجیتال مارکتینگ ارائه می‌دهیم.</p>
-    <img src="https://source.unsplash.com/800x400/?technology" alt="hero image" />
-  </section>  <section id="shop">
-    <h2 class="section-title">فروشگاه</h2>
-    <p>در این بخش محصولات دیجیتال و طراحی‌های اختصاصی را ارائه می‌کنیم.</p>
-  </section>  <section id="services">
-    <h2 class="section-title">خدمات ما</h2>
-    <p>ارائه خدمات حرفه‌ای طراحی سایت، سئو، طراحی لوگو و برندینگ.</p>
-  </section>  <section id="articles">
-    <h2 class="section-title">مقالات</h2>
-    <p>جدیدترین مطالب در حوزه تکنولوژی، دیزاین و دیجیتال مارکتینگ را بخوانید.</p>
-  </section>  <section id="portfolio">
-    <h2 class="section-title">نمونه کارها</h2>
-    <p>منتخبی از پروژه‌های موفق ما را مشاهده کنید.</p>
-  </section>  <section id="contact">
-    <h2 class="section-title">تماس با ما</h2>
-    <p>برای مشاوره یا سفارش با ما تماس بگیرید: <a href="tel:09123456789">09123456789</a></p>
-  </section>  <section id="about">
-    <h2 class="section-title">درباره ما</h2>
-    <p>رادوین با هدف تحول دیجیتال و ارتقاء تجربه کاربران در دنیای آنلاین، از سال ۱۴۰۲ فعالیت خود را آغاز کرده و با تیمی متعهد و خلاق آماده ارائه راهکارهای نوین است.</p>
-  </section>  <footer>
-    <p>کلیه حقوق این سایت متعلق به رادوین است &copy; 2025</p>
-  </footer>
+  </div>
+
+  <div class="menu" id="menu">
+    <a href="#home">صفحه اصلی</a>
+    <a href="#shop">فروشگاه</a>
+    <a href="#services">خدمات</a>
+    <a href="#articles">مقالات</a>
+    <a href="#portfolio">نمونه کارها</a>
+    <a href="#contact">تماس با ما</a>
+    <a href="#about">درباره ما</a>
+    <a href="#" onclick="toggleMenu()">بستن منو</a>
+  </div>
+
+  <div class="content">
+    <h1>به سایت ما خوش آمدید</h1>
+    <p>اینجا می‌تونید بهترین خدمات طراحی و تکنولوژی رو دریافت کنید.</p>
+    <img src="https://via.placeholder.com/600x300" alt="نمونه عکس" style="max-width:100%;border-radius:8px;margin-top:20px;">
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
+  </script>
+
 </body>
 </html>

@@ -1,96 +1,139 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>سایت بنیامین</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
     body {
-      font-family: 'Vazir', sans-serif;
+      font-family: 'Vazirmatn', sans-serif;
       margin: 0;
       padding: 0;
-      direction: rtl;
-      background-color: #f5f5f5;
+      scroll-behavior: smooth;
+      background: #f5f5f5;
+      color: #333;
     }
 
-    nav {
-      background-color: #333;
+    header {
+      background: #222;
       color: white;
-      padding: 15px 0;
+      padding: 15px 30px;
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
       display: flex;
-      justify-content: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 20px;
+      margin: 0;
     }
 
     nav a {
       color: white;
-      margin: 0 20px;
+      margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
+      transition: 0.3s;
     }
 
     nav a:hover {
-      color: #ffd700;
+      color: #ffca28;
     }
 
     section {
-      padding: 100px 20px 60px;
-      min-height: 100vh;
-      border-bottom: 1px solid #ddd;
+      padding: 100px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    h2 {
-      color: #333;
+    .hero {
+      background: linear-gradient(to left, #ffca28, #ffa000);
+      padding: 100px 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
     }
 
     footer {
+      background: #222;
+      color: white;
       text-align: center;
       padding: 20px;
-      background-color: #333;
-      color: white;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- منوی بالا -->
-  <nav>
-    <a href="#home">خانه</a>
-    <a href="#about">درباره ما</a>
-    <a href="#products">محصولات</a>
-    <a href="#contact">تماس با ما</a>
-  </nav>
+  <header>
+    <h1>سایت بنیامین</h1>
+    <nav>
+      <a href="#about">درباره ما</a>
+      <a href="#products">محصولات</a>
+      <a href="#contact">تماس با ما</a>
+    </nav>
+  </header>
 
-  <!-- بخش‌ها -->
-  <section id="home">
-    <h2>سلام! این سایت بنیامینه</h2>
-    <p>به سایت من خوش اومدی. بزودی فعال میشه...</p>
-  </section>
+  <div class="hero" data-aos="fade-down">
+    <h2>به سایت بنیامین خوش اومدی!</h2>
+    <p>اینجا قراره بهترین چیزارو پیدا کنی ✨</p>
+  </div>
 
-  <section id="about">
+  <section id="about" data-aos="fade-up">
     <h2>درباره ما</h2>
-    <p>اینجا می‌تونی اطلاعاتی درباره ما ببینی.</p>
+    <p>ما اینجا هستیم تا تجربه‌ای عالی از خرید آنلاین بهت بدیم. قراره کلی چیز خوب بزودی اضافه بشه.</p>
   </section>
 
-  <section id="products">
+  <section id="products" data-aos="fade-up">
     <h2>محصولات</h2>
-    <p>لیست محصولات در این بخش قرار می‌گیره.</p>
+    <div class="product-card">
+      <h3>لباس مردانه</h3>
+      <p>به زودی محصولات متنوع افزوده می‌شوند.</p>
+    </div>
+    <div class="product-card">
+      <h3>کفش اسپرت</h3>
+      <p>طراحی مدرن، کیفیت بالا.</p>
+    </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" data-aos="fade-up">
     <h2>تماس با ما</h2>
-    <p>میتونی با ما تماس بگیری از این بخش.</p>
+    <p>برای ارتباط: <strong>benyamin@example.com</strong></p>
   </section>
 
   <footer>
-    تمامی حقوق محفوظ است © بنیامین
+    <p>© 2025 سایت بنیامین. همه حقوق محفوظ است.</p>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
-
-

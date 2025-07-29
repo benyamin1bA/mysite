@@ -2,33 +2,66 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title>به‌زودی...</title>
+  <title>سایت بنیامین</title>
   <style>
     body {
-      background-color: #f5f5f5;
-      font-family: Tahoma, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
       direction: rtl;
+      font-family: Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
     }
-    .message {
-      font-size: 24px;
+
+    nav {
+      background-color: #f8f8f8;
+      padding: 15px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
       color: #333;
-      text-align: center;
-      padding: 20px;
-      border: 2px dashed #888;
-      border-radius: 10px;
-      background-color: #fff;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 100px 20px;
+      margin-top: 70px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    h2 {
+      color: #555;
     }
   </style>
 </head>
 <body>
-  <div class="message">
-    سلام 👋<br>
-    این سایت بنیامینه و به‌زودی فعال میشه...
-  </div>
+
+  <nav>
+    <a href="#about">درباره ما</a>
+    <a href="#products">پوشاک</a>
+    <a href="#contact">تماس با ما</a>
+  </nav>
+
+  <section id="about">
+    <h2>درباره ما</h2>
+    <p>به سایت بنیامین خوش اومدی! اینجا قراره بهترین محصولات رو پیدا کنی.</p>
+  </section>
+
+  <section id="products">
+    <h2>پوشاک</h2>
+    <p>در این قسمت انواع لباس و کفش و پوشاک می‌ذاریم.</p>
+  </section>
+
+  <section id="contact">
+    <h2>تماس با ما</h2>
+    <p>برای ارتباط با ما، ایمیل بزن به: benyamin@example.com</p>
+  </section>
+
 </body>
 </html>

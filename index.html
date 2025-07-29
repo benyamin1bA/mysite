@@ -2,145 +2,105 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>رادوین</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
+      font-family: "Tahoma", sans-serif;
       margin: 0;
-      font-family: 'Vazirmatn', sans-serif;
-      background: #fff;
-      color: #333;
+      background-color: #f4f4f4;
     }
 
-    .navbar {
+    header {
+      background-color: #222;
+      color: white;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #222;
-      padding: 10px 20px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      color: white;
+      position: relative;
     }
 
-    .logo {
+    .brand {
       font-size: 20px;
       font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
-    .logo img {
-      width: 24px;
-      height: 24px;
-    }
-
-    .hamburger {
+    .menu-toggle {
+      font-size: 26px;
       cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .hamburger span {
-      width: 25px;
-      height: 3px;
-      background: cyan;
-      border-radius: 3px;
+      color: #0ff;
+      border: none;
+      background: none;
     }
 
     .menu {
       display: none;
       flex-direction: column;
-      background: #111;
-      position: fixed;
-      top: 0;
+      background-color: #333;
+      position: absolute;
+      top: 100%;
       right: 0;
-      width: 250px;
-      height: 100%;
-      padding: 20px;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-    }
-
-    .menu.active {
-      display: flex;
+      width: 200px;
+      z-index: 10;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     .menu a {
-      color: white;
+      padding: 12px 16px;
       text-decoration: none;
-      padding: 12px 0;
-      font-size: 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      border-bottom: 1px solid #444;
+      transition: background 0.2s;
     }
 
     .menu a:hover {
-      color: cyan;
+      background-color: #555;
     }
 
-    .content {
-      padding: 100px 20px 20px;
-      text-align: center;
-    }
+    @media (min-width: 768px) {
+      .menu {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        background: none;
+        box-shadow: none;
+        width: auto;
+        border-radius: 0;
+      }
 
-    .content img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
+      .menu a {
+        border: none;
+        padding: 10px 15px;
+      }
 
-    small {
-      display: block;
-      margin-top: 4px;
-      font-size: 14px;
-      color: #ccc;
+      .menu-toggle {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- نوار بالا -->
-  <div class="navbar">
-    <div class="logo">
-      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="تاج">
-      رادوین
-    </div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-
-  <!-- منو -->
-  <div class="menu" id="menu">
-    <a href="#home">صفحه اصلی</a>
-    <a href="#shop">فروشگاه</a>
-    <a href="#services">خدمات</a>
-    <a href="#articles">مقالات</a>
-    <a href="#portfolio">نمونه کارها</a>
-    <a href="tel:09169730478">
-      تماس با ما
-      <small>mysite12345678gg@gmail.com</small>
-    </a>
-    <a href="#about">درباره ما</a>
-    <a href="#" onclick="toggleMenu()">بستن منو</a>
-  </div>
-
-  <!-- محتوای صفحه -->
-  <div class="content" id="home">
-    <h1>به سایت رادوین خوش آمدید</h1>
-    <p>ما اینجاییم تا تجربه‌ای حرفه‌ای، زیبا و پیشرفته از وب‌سایت رو برای شما فراهم کنیم.</p>
-    <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702" alt="تصویر صفحه اصلی">
-  </div>
+  <header>
+    <div class="brand">👑 رادوین</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav class="menu" id="menu">
+      <a href="#home">صفحه اصلی</a>
+      <a href="#shop">فروشگاه</a>
+      <a href="#services">خدمات</a>
+      <a href="#articles">مقالات</a>
+      <a href="#portfolio">نمونه کارها</a>
+      <a href="#contact">تماس با ما</a>
+      <a href="#about">درباره ما</a>
+    </nav>
+  </header>
 
   <script>
     function toggleMenu() {
-      document.getElementById("menu").classList.toggle("active");
+      const menu = document.getElementById("menu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
     }
   </script>
 

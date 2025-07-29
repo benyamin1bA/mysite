@@ -1,237 +1,233 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>رادوین</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <title>رادوین | صفحه اصلی</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- فونت و آیکون‌ها -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
   <style>
-    body {
-      font-family: "Tahoma", sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background: #fff;
-      color: #333;
+      box-sizing: border-box;
       scroll-behavior: smooth;
     }
 
-    header {
-      background-color: orange;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      font-size: 24px;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      right: -250px;
-      width: 250px;
-      height: 100%;
-      background: #f5f5f5;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-      padding-top: 60px;
-      transition: right 0.3s ease-in-out;
-      z-index: 999;
-    }
-
-    nav ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    nav ul li {
-      padding: 15px 20px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    nav ul li a {
-      text-decoration: none;
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: #f7f7f7;
       color: #333;
-      font-weight: bold;
     }
 
-    .menu-toggle {
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: white;
+    .hamburger {
+      font-size: 30px;
       cursor: pointer;
+      padding: 15px;
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      z-index: 1100;
+      color: #00bcd4;
     }
 
-    .active-nav {
-      right: 0 !important;
+    .menu {
+      position: fixed;
+      right: -270px;
+      top: 0;
+      width: 260px;
+      height: 100%;
+      background: #222;
+      color: white;
+      transition: right 0.4s ease;
+      z-index: 1000;
+      padding: 30px 20px;
+      overflow-y: auto;
+    }
+
+    .menu.active {
+      right: 0;
+    }
+
+    .menu ul {
+      list-style: none;
+    }
+
+    .menu li {
+      margin: 20px 0;
+    }
+
+    .menu li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .menu li a i {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+
+    .menu li a:hover {
+      color: #00bcd4;
+    }
+
+    .close-btn {
+      margin-top: 40px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      color: #ff4c4c;
     }
 
     section {
-      padding: 50px 20px;
+      padding: 100px 20px;
+      min-height: 100vh;
     }
 
-    .gallery img {
-      width: 200px;
-      margin: 10px;
+    section h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #00bcd4;
+    }
+
+    section p {
+      max-width: 700px;
+      line-height: 2;
+    }
+
+    .home-img {
+      max-width: 100%;
+      margin-top: 20px;
       border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
-    .gallery {
+    form {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      max-width: 500px;
     }
 
-    .about {
-      background: #f3f3f3;
-      border-top: 1px solid #ddd;
-      padding: 40px 20px;
+    input, textarea {
+      margin-bottom: 15px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
     }
 
-    footer {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
+    button {
+      padding: 10px;
+      background: #00bcd4;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
     }
 
-    .contact a {
-      display: block;
-      margin: 10px 0;
-      color: orange;
-      font-weight: bold;
-      text-decoration: none;
+    button:hover {
+      background: #0097a7;
     }
 
-    .fa-crown {
-      color: gold;
-    }
-
-    /* Lightbox styles */
-    #lightbox {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    #lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 18px;
-      }
-
-      .gallery img {
-        width: 100px;
-      }
-    }
+    .fa-home { color: #00bcd4; }
+    .fa-shopping-bag { color: #4caf50; }
+    .fa-tools { color: #ff9800; }
+    .fa-book-open { color: #9c27b0; }
+    .fa-briefcase { color: #ff5722; }
+    .fa-headset { color: #03a9f4; }
+    .fa-user-tie { color: #795548; }
+    .fa-times-circle { color: #f44336; }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <button class="menu-toggle" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </button>
-    <h1><i class="fas fa-crown"></i> رادوین</h1>
-  </header>
+  <!-- دکمه منو -->
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-  <nav id="side-menu">
+  <!-- منوی کناری -->
+  <nav class="menu" id="sideMenu">
     <ul>
-      <li><a href="#home">خانه</a></li>
-      <li><a href="#shop">فروشگاه</a></li>
-      <li><a href="#services">خدمات</a></li>
-      <li><a href="#articles">مقالات</a></li>
-      <li><a href="#portfolio">نمونه کارها</a></li>
-      <li><a href="#contact">تماس با ما</a></li>
-      <li><a href="#about">درباره ما</a></li>
+      <li><a href="#home"><i class="fas fa-home"></i>صفحه اصلی</a></li>
+      <li><a href="#store"><i class="fas fa-shopping-bag"></i>فروشگاه</a></li>
+      <li><a href="#services"><i class="fas fa-tools"></i>خدمات</a></li>
+      <li><a href="#articles"><i class="fas fa-book-open"></i>مقالات</a></li>
+      <li><a href="#portfolio"><i class="fas fa-briefcase"></i>نمونه کارها</a></li>
+      <li><a href="#contact"><i class="fas fa-headset"></i>تماس با ما</a></li>
+      <li><a href="#about"><i class="fas fa-user-tie"></i>درباره ما</a></li>
+      <li><a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()"><i class="fas fa-times-circle"></i>بستن منو</a></li>
     </ul>
   </nav>
 
+  <!-- بخش صفحه اصلی -->
   <section id="home">
-    <h2>خوش آمدید!</h2>
-    <p>به وبسایت رسمی رادوین خوش آمدید.</p>
+    <h2>به رادوین خوش آمدید</h2>
+    <p>
+      رادوین، ترکیبی از خلاقیت، تکنولوژی و تجربه برای ساخت وب‌سایت‌های حرفه‌ای و مدرن.
+      ما باور داریم زیبایی و کارایی باید هم‌زمان باشند.
+    </p>
+    <img src="https://images.unsplash.com/photo-1505682634904-d7c075c67b42?auto=format&fit=crop&w=1000&q=80" alt="رادوین" class="home-img">
   </section>
 
-  <section id="shop">
+  <!-- فروشگاه -->
+  <section id="store">
     <h2>فروشگاه</h2>
-    <p>محصولات ویژه ما در این بخش قرار دارند.</p>
+    <p>محصولات دیجیتال با کیفیت بالا و پشتیبانی دائمی.</p>
   </section>
 
+  <!-- خدمات -->
   <section id="services">
     <h2>خدمات</h2>
-    <p>ما بهترین خدمات طراحی، توسعه و برندینگ را ارائه می‌دهیم.</p>
+    <p>طراحی سایت، سئو، مشاوره برندینگ و دیجیتال مارکتینگ.</p>
   </section>
 
+  <!-- مقالات -->
   <section id="articles">
     <h2>مقالات</h2>
-    <p>آخرین مطالب آموزشی و تخصصی حوزه فناوری و طراحی.</p>
+    <p>مطالب آموزشی، خبری و تحلیلی از دنیای تکنولوژی.</p>
   </section>
 
+  <!-- نمونه کارها -->
   <section id="portfolio">
     <h2>نمونه کارها</h2>
-    <div class="gallery">
-      <img src="https://via.placeholder.com/400x250?text=نمونه+1" onclick="openLightbox(this.src)" />
-      <img src="https://via.placeholder.com/400x250?text=نمونه+2" onclick="openLightbox(this.src)" />
-      <img src="https://via.placeholder.com/400x250?text=نمونه+3" onclick="openLightbox(this.src)" />
-    </div>
+    <p>برخی از پروژه‌های موفق رادوین در حوزه وب و برندینگ.</p>
   </section>
 
-  <section id="contact" class="contact">
-    <h2><i class="fas fa-phone"></i> تماس با ما</h2>
-    <a href="tel:09169730478">📞 09169730478</a>
-    <a href="mailto:mysite12345678gg@gmail.com">📧 mysite12345678gg@gmail.com</a>
-  </section>
-
-  <section id="about" class="about">
-    <h2><i class="fas fa-info-circle"></i> درباره ما</h2>
-    <p>
-      گروه رادوین با تکیه بر تجربه و خلاقیت در زمینه طراحی وب، گرافیک و تولید محتوا فعالیت می‌کند.
-      هدف ما ارائه خدماتی نوآورانه، مقرون‌به‌صرفه و حرفه‌ای به مشتریان است.
-      ما به کیفیت، پشتیبانی و رضایت کاربران اهمیت ویژه می‌دهیم.
+  <!-- تماس با ما -->
+  <section id="contact">
+    <h2>تماس با ما</h2>
+    <form>
+      <input type="text" placeholder="نام کامل">
+      <input type="email" placeholder="ایمیل">
+      <textarea rows="5" placeholder="پیام شما"></textarea>
+      <button type="submit">ارسال پیام</button>
+    </form>
+    <p style="margin-top:20px;">
+      📞 <a href="tel:09169730478">09169730478</a>  
+      | ✉ <a href="mailto:mysite12345678gg@gmail.com">mysite12345678gg@gmail.com</a>
     </p>
   </section>
 
-  <footer>
-    © 2025 رادوین. تمام حقوق محفوظ است.
-  </footer>
+  <!-- درباره ما -->
+  <section id="about">
+    <h2>درباره ما</h2>
+    <p>رادوین یک تیم خلاق، باانرژی و متعهد است که با سال‌ها تجربه در حوزه طراحی وب، تلاش می‌کند تجربه‌ای منحصر‌به‌فرد برای مشتریانش فراهم کند.</p>
+  </section>
 
-  <!-- Lightbox -->
-  <div id="lightbox" onclick="closeLightbox()">
-    <img src="" id="lightbox-img" />
-  </div>
-
+  <!-- اسکریپت -->
   <script>
     function toggleMenu() {
-      const menu = document.getElementById('side-menu');
-      menu.classList.toggle('active-nav');
-    }
-
-    function openLightbox(src) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox').style.display = 'flex';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
+      document.getElementById('sideMenu').classList.toggle('active');
     }
   </script>
+
 </body>
 </html>

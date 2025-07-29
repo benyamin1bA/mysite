@@ -4,71 +4,86 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>آیوارا</title>
+
+  <!-- فونت فارسی زیبا -->
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+
   <style>
     :root {
       --primary: #0066cc;
-      --bg: #f9f9f9;
+      --bg: #fff8f0;
       --text: #222;
-      --highlight: #e6f0ff;
-    }
-    [data-theme="dark"] {
-      --bg: #121212;
-      --text: #f0f0f0;
-      --highlight: #1e1e1e;
+      --highlight: #ffe9cc;
     }
 
     body {
-      font-family: Tahoma, sans-serif;
       margin: 0;
+      font-family: 'Vazir', sans-serif;
       background-color: var(--bg);
       color: var(--text);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     header {
       background-color: var(--primary);
       color: white;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 15px 20px;
     }
 
     .logo {
-      font-size: 20px;
       font-weight: bold;
+      font-size: 20px;
     }
 
     .title {
-      text-align: center;
       font-size: 22px;
-      margin: 40px 0;
     }
 
     .menu-toggle {
-      font-size: 24px;
+      font-size: 26px;
       cursor: pointer;
-      display: none;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.2);
     }
 
     nav {
       display: none;
       flex-direction: column;
       background-color: var(--highlight);
-      padding: 10px;
-      margin: 0 20px;
-      border-radius: 8px;
+      margin: 15px 20px;
+      padding: 15px;
+      border-radius: 12px;
+      animation: slideDown 0.5s ease-out forwards;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     nav a {
-      padding: 10px;
+      padding: 12px 10px;
       text-decoration: none;
-      color: var(--text);
-      font-weight: bold;
+      color: #444;
+      font-size: 18px;
       border-bottom: 1px solid #ccc;
+      transition: all 0.3s ease;
     }
 
-    nav a:last-child {
-      border: none;
+    nav a:hover {
+      background-color: #fff2e0;
+      border-radius: 8px;
     }
 
     nav.active {
@@ -76,10 +91,40 @@
     }
 
     section {
-      padding: 30px 20px;
       margin: 20px;
       background-color: var(--highlight);
-      border-radius: 10px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    details {
+      margin-top: 10px;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: 'Vazir', sans-serif;
+    }
+
+    form button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
     }
 
     .dark-toggle {
@@ -95,8 +140,8 @@
     }
 
     @media screen and (max-width: 768px) {
-      .menu-toggle {
-        display: block;
+      .title {
+        font-size: 18px;
       }
     }
   </style>
@@ -118,41 +163,39 @@
   </nav>
 
   <main>
-
     <section id="portfolio" style="display: none;">
       <h2>نمونه کارها</h2>
       <p>اینجا می‌تونی پروژه‌هات رو نمایش بدی.</p>
     </section>
 
     <section id="faq" style="display: none;">
-      <h2>سوالات متداول</h2>
+      <h2>سؤالات متداول</h2>
       <details>
         <summary>چطور با شما تماس بگیریم؟</summary>
         <p>از طریق بخش تماس با ما پایین سایت.</p>
       </details>
       <details>
-        <summary>آیا این سایت واکنش‌گرا است؟</summary>
-        <p>بله، کاملاً برای موبایل و دسکتاپ بهینه شده.</p>
+        <summary>آیا این سایت واکنش‌گراست؟</summary>
+        <p>بله، روی موبایل و دسکتاپ عالی نمایش داده می‌شه.</p>
       </details>
     </section>
 
     <section id="contact" style="display: none;">
       <h2>تماس با ما</h2>
       <form>
-        <label>نام:</label><br>
-        <input type="text" required><br><br>
+        <label>نام:</label>
+        <input type="text" required>
 
-        <label>ایمیل:</label><br>
-        <input type="email" value="mysite12345678gg@gmail.com" readonly><br><br>
+        <label>ایمیل:</label>
+        <input type="email" value="mysite12345678gg@gmail.com" readonly>
 
-        <label>پیام:</label><br>
-        <textarea required></textarea><br><br>
+        <label>پیام:</label>
+        <textarea required></textarea>
 
         <button type="submit">ارسال</button>
       </form>
-      <p>شماره تماس: 09169730478</p>
+      <p style="margin-top: 15px;">شماره تماس: 09169730478</p>
     </section>
-
   </main>
 
   <script>
@@ -165,7 +208,6 @@
       document.body.dataset.theme = document.body.dataset.theme === "dark" ? "" : "dark";
     }
 
-    // وقتی روی هر منوی ناوبری کلیک شد، فقط همون بخش نمایش داده بشه
     const links = document.querySelectorAll("nav a");
     links.forEach(link => {
       link.addEventListener("click", function (e) {
@@ -179,4 +221,4 @@
   </script>
 
 </body>
-</html>
+</html>           

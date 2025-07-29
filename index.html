@@ -2,141 +2,114 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>آیوارا | خوش اومدی</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>آیوارا</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Vazirmatn', sans-serif;
-    }
-
     body {
-      background: #f4f4f4;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    nav {
-      background: #222;
-      color: white;
-      padding: 1rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
-    .menu-icon {
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-
-    .menu-items {
-      display: none;
-      flex-direction: column;
-      background: #333;
-      padding: 1rem;
-    }
-
-    .menu-items a {
-      color: white;
-      text-decoration: none;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #444;
-      transition: 0.3s;
-    }
-
-    .menu-items a:hover {
-      color: #ffa500;
+      margin: 0;
+      font-family: 'Vazir', sans-serif;
+      background-color: #f4f4f4;
     }
 
     header {
-      background: linear-gradient(to left, #ffa500, #ff6a00);
+      background: linear-gradient(to left, #1c1c1c, #ff6600);
       color: white;
-      padding: 2rem;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    section {
-      padding: 2rem;
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
     }
 
-    footer {
-      background: #222;
+    .menu-toggle {
+      font-size: 1.5rem;
+      background: none;
+      border: none;
       color: white;
-      text-align: center;
-      padding: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
-    .icon {
-      margin-left: 8px;
+    .menu-toggle:hover {
+      transform: scale(1.2);
     }
 
-    @media(min-width: 768px) {
-      .menu-icon {
+    nav {
+      display: none;
+      flex-direction: column;
+      background-color: #1c1c1c;
+      padding: 0 1.5rem;
+      animation: slideDown 0.4s ease forwards;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 1rem 0;
+      border-bottom: 1px solid #444;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff9900;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .menu-toggle {
         display: none;
       }
-      .menu-items {
+
+      nav {
         display: flex !important;
         flex-direction: row;
+        gap: 2rem;
         background: none;
-        padding: 0;
-        gap: 1rem;
       }
-      .menu-items a {
+
+      nav a {
         border: none;
+        padding: 0;
       }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div><strong>آیوارا</strong></div>
-    <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
-    <div class="menu-items" id="menuItems">
-      <a href="#home">خانه</a>
-      <a href="#about">درباره ما</a>
-      <a href="#contact">تماس با ما</a>
-    </div>
-  </nav>
-
-  <header id="home" data-aos="fade-down">
-    <h1>به سایت آیوارا خوش اومدی!</h1>
-    <p>✨ اینجا قراره بهترین چیزارو پیدا کنی ✨</p>
+  <header>
+    <div class="logo">آیوارا</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
   </header>
 
-  <section id="about" data-aos="fade-up">
-    <h2>درباره ما</h2>
-    <p>ما اینجا هستیم تا تجربه‌ای عالی از خرید آنلاین بهت بدیم. قراره کلی چیز خوب بزودی اضافه بشه.</p>
-  </section>
+  <nav id="mobileMenu">
+    <a href="#home">خانه</a>
+    <a href="#about">درباره ما</a>
+    <a href="#contact">تماس با ما - 09169730478</a>
+  </nav>
 
-  <section id="contact" data-aos="fade-up">
-    <h2>تماس با ما</h2>
-    <p><i class="fas fa-phone icon"></i> شماره تماس: <a href="tel:09169730478" style="color: #ffa500;">09169730478</a></p>
-    <p><i class="fas fa-envelope icon"></i> ایمیل: <a href="mailto:benyamin@example.com" style="color: #ffa500;">benyamin@example.com</a></p>
-  </section>
-
-  <footer>
-    <p>© 2025 آیوارا - تمام حقوق محفوظ است.</p>
-  </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
-
     function toggleMenu() {
-      const menu = document.getElementById('menuItems');
-      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
     }
   </script>
+
 </body>
 </html>

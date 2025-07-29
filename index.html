@@ -2,35 +2,38 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>آیوارا</title>
 
-  <!-- فونت فارسی زیبا -->
-  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+  <!-- فونت فارسی اصیل -->
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Shabnam/Shabnam.css" rel="stylesheet" />
 
   <style>
     :root {
-      --primary: #0066cc;
-      --bg: #fff8f0;
-      --text: #222;
-      --highlight: #ffe9cc;
+      --orange: #ff9933;
+      --light-bg: #fff8f0;
+      --dark-text: #222;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: 'Vazir', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      animation: fadeIn 1.5s ease-in-out;
+      font-family: 'Shabnam', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--dark-text);
+      animation: fadeInUp 1s ease-out;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     header {
-      background-color: var(--primary);
+      background-color: var(--orange);
       color: white;
       display: flex;
       justify-content: space-between;
@@ -39,46 +42,53 @@
     }
 
     .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
       font-weight: bold;
-      font-size: 20px;
     }
 
-    .title {
-      font-size: 22px;
+    .logo svg {
+      width: 28px;
+      height: 28px;
+      margin-left: 10px;
+      fill: white;
     }
 
     .menu-toggle {
       font-size: 26px;
       cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .menu-toggle:hover {
-      transform: scale(1.2);
+      background: none;
+      border: none;
+      color: white;
+      display: block;
     }
 
     nav {
       display: none;
       flex-direction: column;
-      background-color: var(--highlight);
-      margin: 15px 20px;
-      padding: 15px;
+      background-color: #ffe9cc;
+      margin: 0 15px;
+      padding: 10px;
       border-radius: 12px;
-      animation: slideDown 0.5s ease-out forwards;
+    }
+
+    nav.active {
+      display: flex;
+      animation: slideDown 0.4s ease-out;
     }
 
     @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-20px); }
+      from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     nav a {
-      padding: 12px 10px;
+      padding: 10px;
       text-decoration: none;
-      color: #444;
+      color: #333;
       font-size: 18px;
       border-bottom: 1px solid #ccc;
-      transition: all 0.3s ease;
     }
 
     nav a:hover {
@@ -86,62 +96,21 @@
       border-radius: 8px;
     }
 
-    nav.active {
-      display: flex;
-    }
+    @media(min-width: 768px) {
+      nav {
+        display: flex !important;
+        flex-direction: row;
+        background: none;
+      }
 
-    section {
-      margin: 20px;
-      background-color: var(--highlight);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    }
+      nav a {
+        margin-left: 20px;
+        color: white;
+        border: none;
+      }
 
-    h2 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    details {
-      margin-top: 10px;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-family: 'Vazir', sans-serif;
-    }
-
-    form button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .dark-toggle {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      background: #333;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    @media screen and (max-width: 768px) {
-      .title {
-        font-size: 18px;
+      .menu-toggle {
+        display: none;
       }
     }
   </style>
@@ -149,76 +118,24 @@
 <body>
 
   <header>
-    <div class="logo">آیوارا</div>
-    <div class="title">به سایت آیوارا خوش آمدید</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="logo">
+      <!-- آیکون شیر -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M320 0c34.7 0 56 33.6 56 64 0 16.1-6.6 30.9-17.3 42.1 14.2 7.5 26.4 18.2 35.6 31.1C411.7 123.6 420.7 120 432 120c26.5 0 48 21.5 48 48 0 9.4-2.8 18.1-7.5 25.3C510 203.2 544 248.8 544 304c0 79.5-64.5 144-144 144H384v24c0 22.1-17.9 40-40 40H296c-22.1 0-40-17.9-40-40v-24h-16c-79.5 0-144-64.5-144-144 0-55.2 34-100.8 71.5-110.7C130.8 186.1 128 177.4 128 168c0-26.5 21.5-48 48-48 11.3 0 20.3 3.6 28.7 9.2 9.2-12.9 21.4-23.6 35.6-31.1C270.6 94.9 264 80.1 264 64c0-30.4 21.3-64 56-64z"/></svg>
+      آیوارا
+    </div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="main-nav">
+      <a href="#portfolio">نمونه‌کارها</a>
+      <a href="#faq">سؤالات</a>
+      <a href="#contact">تماس با ما</a>
+    </nav>
   </header>
-
-  <button class="dark-toggle" onclick="toggleTheme()">🌓</button>
-
-  <nav id="nav-menu">
-    <a href="#portfolio">نمونه‌کارها</a>
-    <a href="#faq">سوالات متداول</a>
-    <a href="#contact">تماس با ما</a>
-  </nav>
-
-  <main>
-    <section id="portfolio" style="display: none;">
-      <h2>نمونه کارها</h2>
-      <p>اینجا می‌تونی پروژه‌هات رو نمایش بدی.</p>
-    </section>
-
-    <section id="faq" style="display: none;">
-      <h2>سؤالات متداول</h2>
-      <details>
-        <summary>چطور با شما تماس بگیریم؟</summary>
-        <p>از طریق بخش تماس با ما پایین سایت.</p>
-      </details>
-      <details>
-        <summary>آیا این سایت واکنش‌گراست؟</summary>
-        <p>بله، روی موبایل و دسکتاپ عالی نمایش داده می‌شه.</p>
-      </details>
-    </section>
-
-    <section id="contact" style="display: none;">
-      <h2>تماس با ما</h2>
-      <form>
-        <label>نام:</label>
-        <input type="text" required>
-
-        <label>ایمیل:</label>
-        <input type="email" value="mysite12345678gg@gmail.com" readonly>
-
-        <label>پیام:</label>
-        <textarea required></textarea>
-
-        <button type="submit">ارسال</button>
-      </form>
-      <p style="margin-top: 15px;">شماره تماس: 09169730478</p>
-    </section>
-  </main>
 
   <script>
     function toggleMenu() {
-      const nav = document.getElementById('nav-menu');
-      nav.classList.toggle('active');
+      document.getElementById("main-nav").classList.toggle("active");
     }
-
-    function toggleTheme() {
-      document.body.dataset.theme = document.body.dataset.theme === "dark" ? "" : "dark";
-    }
-
-    const links = document.querySelectorAll("nav a");
-    links.forEach(link => {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelectorAll("main section").forEach(sec => sec.style.display = "none");
-        const targetId = this.getAttribute("href");
-        document.querySelector(targetId).style.display = "block";
-        document.getElementById('nav-menu').classList.remove('active');
-      });
-    });
   </script>
 
 </body>
-</html>           
+</html>

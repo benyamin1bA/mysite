@@ -2,251 +2,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>آیوارا | طراحی وب‌سایت حرفه‌ای</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <title>رادوین</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Vazirmatn', sans-serif;
-      background-color: #fff;
-      color: #333;
-      animation: fadeIn 1.2s ease;
-    }header {
-  background-color: #ff6f00;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.logo img {
-  width: 40px;
-  margin-left: 0.7rem;
-}
-
-.menu-toggle {
-  display: none;
-  font-size: 24px;
-  background: none;
-  border: none;
-  color: white;
-}
-
-nav {
-  display: flex;
-  gap: 1.5rem;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-  nav {
-    display: none;
-    flex-direction: column;
-    background-color: #fff;
-    position: absolute;
-    top: 65px;
-    right: 0;
-    width: 100%;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  nav a {
-    color: #333;
-    padding: 0.5rem 0;
-  }
-  nav.show {
-    display: flex;
-  }
-}
-
-section {
-  padding: 3rem 1rem;
-}
-
-.features i {
-  font-size: 2rem;
-  color: #ff6f00;
-}
-
-.faq .accordion-button {
-  font-weight: bold;
-}
-
-footer {
-  background-color: #f5f5f5;
-  padding: 2rem;
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-.back-to-top {
-  position: fixed;
-  bottom: 30px;
-  left: 30px;
-  background: #ff6f00;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 18px;
-  display: none;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
+    body { font-family: 'Vazir', sans-serif; background-color: #fff; margin: 0; padding: 0; }
+    .top-bar { background-color: #f57c00; color: white; padding: 5px 15px; text-align: center; }
+    .contact-icons { display: flex; gap: 10px; align-items: center; justify-content: center; background: #f5f5f5; padding: 10px; }
+    .contact-icons a { color: #f57c00; font-size: 1.2rem; }
+    .header { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; background: white; border-bottom: 1px solid #ddd; }
+    .logo h1 { font-size: 1.5rem; color: #f57c00; display: flex; align-items: center; gap: 10px; }
+    .menu-toggle { font-size: 1.5rem; cursor: pointer; color: #333; }
+    .mobile-nav { position: fixed; top: 0; left: 0; height: 100%; width: 250px; background: #fff; padding: 20px; transform: translateX(-100%); transition: 0.3s; box-shadow: 2px 0 10px rgba(0,0,0,0.1); }
+    .mobile-nav.active { transform: translateX(0); }
+    .mobile-nav ul { list-style: none; padding: 0; }
+    .mobile-nav li { margin: 15px 0; font-weight: bold; }
+    .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid #ddd; display: flex; justify-content: space-around; padding: 5px 0; }
+    .bottom-nav a { color: #333; text-align: center; font-size: 0.9rem; }
+    .bottom-nav i { display: block; font-size: 1.2rem; margin-bottom: 2px; }
+    .section { padding: 40px 20px; text-align: center; }
+    .section h2 { margin-bottom: 20px; color: #f57c00; }
+    .about { background: #fef5e7; color: #333; padding: 30px; border-top: 2px solid #f57c00; }
+    .about p { line-height: 2; }
+    .phone-btn { background: #f57c00; color: white; border: none; padding: 8px 15px; border-radius: 6px; }
+    .sample-imgs img { width: 100%; max-width: 250px; margin: 10px; border-radius: 10px; transition: 0.3s ease; cursor: pointer; }
+    .sample-imgs img:hover { transform: scale(1.05); }
   </style>
 </head>
-<body><header>
-  <div class="logo">
-    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="آیوارا">
-    آیوارا
-  </div>
-  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-  <nav id="nav">
-    <a href="#about">درباره ما</a>
-    <a href="#services">خدمات</a>
-    <a href="#portfolio">نمونه کار</a>
-    <a href="#faq">سؤالات متداول</a>
-    <a href="#contact">تماس با ما</a>
-  </nav>
-</header><section id="about">
-  <div class="container text-center">
+<body>  <div class="top-bar">به رادوین خوش آمدید. صداقت را انتخاب کردیم.</div>  <div class="contact-icons">
+    <a href="https://wa.me/989169730478"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+    <button onclick="copyPhone()" class="phone-btn">تماس با ما</button>
+  </div>  <div class="header">
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <div class="logo">
+      <h1><i class="fas fa-crown"></i> رادوین</h1>
+    </div>
+  </div>  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li>خانه</li>
+      <li>فروشگاه</li>
+      <li>خدمات</li>
+      <li>مقالات</li>
+      <li>نمونه کارها</li>
+      <li>تماس با ما</li>
+      <li>درباره ما</li>
+    </ul>
+  </div>  <div class="section" id="samples">
+    <h2>نمونه کارها</h2>
+    <div class="sample-imgs d-flex flex-wrap justify-content-center">
+      <img src="https://via.placeholder.com/250" alt="نمونه 1">
+      <img src="https://via.placeholder.com/250" alt="نمونه 2">
+      <img src="https://via.placeholder.com/250" alt="نمونه 3">
+    </div>
+  </div>  <div class="about">
     <h2>درباره ما</h2>
     <p>
-      در آیوارا، ما باور داریم هر ایده‌ای لیاقت دیده شدن دارد. با تکیه بر تخصص، خلاقیت و نوآوری، خدمات طراحی وب‌سایت، برندینگ و سئو را با بالاترین کیفیت ارائه می‌دهیم. ما تنها یک سایت نمی‌سازیم، ما آینده دیجیتال شما را طراحی می‌کنیم.
+      رادوین با هدف ارائه خدمات تخصصی در زمینه طراحی، تولید و پشتیبانی انواع محصولات دیجیتال و تبلیغاتی شکل گرفته است. تیم ما با تمرکز بر کیفیت، نوآوری و رضایت مشتری همواره در تلاش است تا تجربه‌ای متفاوت و حرفه‌ای برای کاربران خود ایجاد کند.
     </p>
-  </div>
-</section><section id="services" class="bg-light">
-  <div class="container text-center">
-    <h2>خدمات ما</h2>
-    <div class="row features mt-4">
-      <div class="col-md-3">
-        <i class="bi bi-display"></i>
-        <h5>طراحی وب‌سایت</h5>
-        <p>سایت واکنش‌گرا و حرفه‌ای مطابق با نیاز شما</p>
-      </div>
-      <div class="col-md-3">
-        <i class="bi bi-bar-chart"></i>
-        <h5>سئو و بهینه‌سازی</h5>
-        <p>افزایش بازدید و رتبه بهتر در گوگل</p>
-      </div>
-      <div class="col-md-3">
-        <i class="bi bi-brush"></i>
-        <h5>برندینگ</h5>
-        <p>طراحی هویت بصری و لوگو خاص برای برند شما</p>
-      </div>
-      <div class="col-md-3">
-        <i class="bi bi-headset"></i>
-        <h5>پشتیبانی</h5>
-        <p>پشتیبانی سریع و اختصاصی برای هر پروژه</p>
-      </div>
-    </div>
-  </div>
-</section><section id="portfolio">
-  <div class="container text-center">
-    <h2>نمونه کارها</h2>
-    <div class="row mt-4">
-      <div class="col-md-4 mb-3">
-        <img src="https://via.placeholder.com/300x200" class="img-fluid rounded" alt="نمونه کار 1">
-        <h6 class="mt-2">نمونه کار شماره ۱</h6>
-      </div>
-      <div class="col-md-4 mb-3">
-        <img src="https://via.placeholder.com/300x200" class="img-fluid rounded" alt="نمونه کار 2">
-        <h6 class="mt-2">نمونه کار شماره ۲</h6>
-      </div>
-      <div class="col-md-4 mb-3">
-        <img src="https://via.placeholder.com/300x200" class="img-fluid rounded" alt="نمونه کار 3">
-        <h6 class="mt-2">نمونه کار شماره ۳</h6>
-      </div>
-    </div>
-  </div>
-</section><section id="faq" class="bg-light">
-  <div class="container">
-    <h2 class="text-center">سؤالات متداول</h2>
-    <div class="accordion mt-4" id="accordionFAQ">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-            مدت زمان طراحی سایت چقدره؟
-          </button>
-        </h2>
-        <div id="faq1" class="accordion-collapse collapse show">
-          <div class="accordion-body">بسته به پروژه، بین ۷ تا ۱۴ روز کاری زمان نیاز هست.</div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-            پشتیبانی داره؟
-          </button>
-        </h2>
-        <div id="faq2" class="accordion-collapse collapse">
-          <div class="accordion-body">بله. تمامی پروژه‌ها شامل پشتیبانی رایگان ۳ ماهه هستند.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section><section id="contact">
-  <div class="container text-center">
-    <h2>تماس با ما</h2>
-    <p>📞 09169730478</p>
-    <p>✉ mysite12345678gg@gmail.com</p>
-    <form class="mt-4">
-      <div class="row g-3">
-        <div class="col-md-6">
-          <input type="text" class="form-control" placeholder="نام شما">
-        </div>
-        <div class="col-md-6">
-          <input type="email" class="form-control" placeholder="ایمیل شما">
-        </div>
-        <div class="col-12">
-          <textarea class="form-control" rows="4" placeholder="پیام شما"></textarea>
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-warning">ارسال پیام</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</section><footer>
-  <p>تمامی حقوق این سایت متعلق به آیوارا است.</p>
-</footer><button class="back-to-top" onclick="scrollToTop()">↑</button>
-
-<script>
-  function toggleMenu() {
-    document.getElementById('nav').classList.toggle('show');
-  }
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-  window.onscroll = function() {
-    const btn = document.querySelector('.back-to-top');
-    if (window.scrollY > 200) {
-      btn.style.display = 'block';
-    } else {
-      btn.style.display = 'none';
+  </div>  <div class="bottom-nav">
+    <a href="#"><i class="fas fa-store"></i>فروشگاه</a>
+    <a href="#"><i class="fas fa-heart"></i>علاقه‌مندی</a>
+    <a href="#"><i class="fas fa-shopping-bag"></i>سبد خرید</a>
+    <a href="#"><i class="fas fa-user"></i>حساب من</a>
+  </div>  <script>
+    function toggleMenu() {
+      document.getElementById("mobileNav").classList.toggle("active");
     }
-  };
-</script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script></body>
+
+    function copyPhone() {
+      navigator.clipboard.writeText("09169730478").then(() => {
+        alert("شماره تماس کپی شد!");
+      });
+    }
+  </script></body>
 </html>

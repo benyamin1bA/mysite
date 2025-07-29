@@ -1,44 +1,39 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<!DOCTYPE html><html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>آیوارا</title>
-
-  <!-- فونت فارسی اصیل -->
-  <link href="https://cdn.fontcdn.ir/Font/Persian/Shabnam/Shabnam.css" rel="stylesheet" />
-
-  <style>
+  <title>آیوارا</title>  <!-- فونت فارسی وزیر -->  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" />  <style>
     :root {
-      --orange: #ff9933;
-      --light-bg: #fff8f0;
-      --dark-text: #222;
+      --dark-bg: #121212;
+      --orange: #ff9500;
+      --text-light: #f5f5f5;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: 'Shabnam', sans-serif;
-      background-color: var(--light-bg);
-      color: var(--dark-text);
+      font-family: 'Vazir', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
       animation: fadeInUp 1s ease-out;
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     header {
-      background-color: var(--orange);
-      color: white;
+      background-color: var(--dark-bg);
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
+      border-bottom: 2px solid var(--orange);
     }
 
     .logo {
@@ -46,13 +41,14 @@
       align-items: center;
       font-size: 24px;
       font-weight: bold;
+      color: var(--orange);
     }
 
     .logo svg {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       margin-left: 10px;
-      fill: white;
+      fill: var(--orange);
     }
 
     .menu-toggle {
@@ -60,17 +56,17 @@
       cursor: pointer;
       background: none;
       border: none;
-      color: white;
+      color: var(--orange);
       display: block;
     }
 
     nav {
       display: none;
       flex-direction: column;
-      background-color: #ffe9cc;
-      margin: 0 15px;
+      background-color: #1e1e1e;
+      margin: 10px;
       padding: 10px;
-      border-radius: 12px;
+      border-radius: 10px;
     }
 
     nav.active {
@@ -86,14 +82,13 @@
     nav a {
       padding: 10px;
       text-decoration: none;
-      color: #333;
+      color: var(--text-light);
       font-size: 18px;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #444;
     }
 
     nav a:hover {
-      background-color: #fff2e0;
-      border-radius: 8px;
+      color: var(--orange);
     }
 
     @media(min-width: 768px) {
@@ -105,7 +100,6 @@
 
       nav a {
         margin-left: 20px;
-        color: white;
         border: none;
       }
 
@@ -113,13 +107,10 @@
         display: none;
       }
     }
-  </style>
-</head>
-<body>
-
-  <header>
+  </style></head>
+<body>  <header>
     <div class="logo">
-      <!-- آیکون شیر -->
+      <!-- آیکون شیر افسانه‌ای -->
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M320 0c34.7 0 56 33.6 56 64 0 16.1-6.6 30.9-17.3 42.1 14.2 7.5 26.4 18.2 35.6 31.1C411.7 123.6 420.7 120 432 120c26.5 0 48 21.5 48 48 0 9.4-2.8 18.1-7.5 25.3C510 203.2 544 248.8 544 304c0 79.5-64.5 144-144 144H384v24c0 22.1-17.9 40-40 40H296c-22.1 0-40-17.9-40-40v-24h-16c-79.5 0-144-64.5-144-144 0-55.2 34-100.8 71.5-110.7C130.8 186.1 128 177.4 128 168c0-26.5 21.5-48 48-48 11.3 0 20.3 3.6 28.7 9.2 9.2-12.9 21.4-23.6 35.6-31.1C270.6 94.9 264 80.1 264 64c0-30.4 21.3-64 56-64z"/></svg>
       آیوارا
     </div>
@@ -129,13 +120,9 @@
       <a href="#faq">سؤالات</a>
       <a href="#contact">تماس با ما</a>
     </nav>
-  </header>
-
-  <script>
+  </header>  <script>
     function toggleMenu() {
       document.getElementById("main-nav").classList.toggle("active");
     }
-  </script>
-
-</body>
+  </script></body>
 </html>

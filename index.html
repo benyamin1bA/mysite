@@ -1,107 +1,99 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>رادوین</title>
+  <meta charset="UTF-8">
+  <title>فرم سفارش محصول</title>
   <style>
     body {
-      font-family: "Tahoma", sans-serif;
+      font-family: 'Tahoma', sans-serif;
+      direction: rtl;
+      background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+      padding: 40px;
       margin: 0;
-      background-color: #f4f4f4;
+      text-align: center;
     }
 
-    header {
-      background-color: #222;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
+    h2 {
+      color: #333;
     }
 
-    .brand {
-      font-size: 20px;
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: 20px auto;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
       font-weight: bold;
     }
 
-    .menu-toggle {
-      font-size: 26px;
-      cursor: pointer;
-      color: #0ff;
-      border: none;
-      background: none;
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
     }
 
-    .menu {
-      display: none;
-      flex-direction: column;
-      background-color: #333;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      width: 200px;
-      z-index: 10;
-      border-radius: 0 0 8px 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .menu a {
-      padding: 12px 16px;
-      text-decoration: none;
+    button {
+      background-color: #28a745;
       color: white;
-      border-bottom: 1px solid #444;
-      transition: background 0.2s;
+      font-weight: bold;
+      border: none;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
     }
 
-    .menu a:hover {
-      background-color: #555;
+    button:hover {
+      background-color: #218838;
     }
 
-    @media (min-width: 768px) {
-      .menu {
-        display: flex !important;
-        position: static;
-        flex-direction: row;
-        background: none;
-        box-shadow: none;
-        width: auto;
-        border-radius: 0;
-      }
-
-      .menu a {
-        border: none;
-        padding: 10px 15px;
-      }
-
-      .menu-toggle {
-        display: none;
-      }
+    #successMessage {
+      display: none;
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="brand">👑 رادوین</div>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav class="menu" id="menu">
-      <a href="#home">صفحه اصلی</a>
-      <a href="#shop">فروشگاه</a>
-      <a href="#services">خدمات</a>
-      <a href="#articles">مقالات</a>
-      <a href="#portfolio">نمونه کارها</a>
-      <a href="#contact">تماس با ما</a>
-      <a href="#about">درباره ما</a>
-    </nav>
-  </header>
+  <h2>فرم سفارش محصول</h2>
+
+  <form id="orderForm">
+    <label for="name">نام:</label>
+    <input type="text" id="name" placeholder="نام شما" required>
+
+    <label for="phone">شماره تماس:</label>
+    <input type="tel" id="phone" placeholder="مثلاً 09123456789" required>
+
+    <label for="product">انتخاب محصول:</label>
+    <select id="product">
+      <option value="محصول ۱">محصول ۱</option>
+      <option value="محصول ۲">محصول ۲</option>
+      <option value="محصول ۳">محصول ۳</option>
+    </select>
+
+    <button type="submit">ثبت سفارش</button>
+  </form>
+
+  <div id="successMessage">✅ سفارش شما با موفقیت ثبت شد!</div>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById("menu");
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-    }
+    const form = document.getElementById("orderForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      successMessage.style.display = "block";
+      form.reset();
+    });
   </script>
 
 </body>

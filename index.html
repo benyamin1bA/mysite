@@ -1,142 +1,87 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>آیوارا 💎</title>
-
-  <!-- فونت فارسی Vazir -->
-  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" type="text/css" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>آیوارا</title>
   <style>
-    body {
-      font-family: 'Vazir', sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      padding: 0;
+      font-family: 'Vazir', sans-serif;
     }
 
-    /* === هدر سایت === */
-    .navbar {
-      background-color: #000;
-      color: #fff;
-      padding: 15px 20px;
+    body {
+      background: #f8f9fa;
+      color: #222;
+      direction: rtl;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .navbar-title {
-      font-size: 22px;
-      font-weight: bold;
+    .logo {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .navbar-title .icon {
-      font-size: 22px;
-      color: gold;
+    .logo-icon {
+      width: 20px;
+      height: 20px;
+      background: white;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
     }
 
-    .menu-icon {
-      font-size: 30px;
+    .menu-btn {
+      font-size: 24px;
       cursor: pointer;
-      transition: transform 0.3s;
+      background: none;
+      border: none;
+      color: white;
     }
 
-    .nav-links {
-      list-style: none;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      width: 100%;
-      background-color: #111;
-      padding: 0;
-      margin: 0;
+    nav {
+      background: #222;
+      color: white;
       display: none;
       flex-direction: column;
-      animation: fadeIn 0.3s ease-in-out;
-      z-index: 1000;
+      padding: 15px;
+      animation: fadeIn 0.4s ease;
     }
 
-    .nav-links.open {
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      border-bottom: 1px solid #444;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    .show-menu {
       display: flex;
     }
 
-    .nav-links li {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    section {
+      padding: 50px 20px;
     }
 
-    .nav-links li a {
-      display: block;
-      padding: 14px 20px;
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-      transition: background 0.2s;
-    }
-
-    .nav-links li a:hover {
-      background-color: gold;
-      color: #000;
-    }
-
-    /* === فرم سفارش === */
-    .form-container {
-      background-color: #fff;
-      max-width: 450px;
-      margin: 40px auto;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #222;
-    }
-
-    label {
-      display: block;
-      margin: 10px 0 5px;
-    }
-
-    input, select, button {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      font-size: 15px;
-      border: 1px solid #ccc;
-      margin-bottom: 15px;
-    }
-
-    button {
-      background-color: gold;
-      color: black;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-    }
-
-    #successMessage {
-      text-align: center;
-      color: green;
-      margin-top: 15px;
-      display: none;
-    }
-
-    /* === درباره ما === */
-    .about-box {
-      background-color: #fff3cd;
-      padding: 20px;
-      max-width: 600px;
-      margin: 30px auto;
-      border-radius: 10px;
-      font-size: 16px;
-      line-height: 1.8;
+    #contact a {
+      color: blue;
+      text-decoration: underline;
     }
 
     @keyframes fadeIn {
@@ -144,87 +89,74 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (min-width: 769px) {
-      .menu-icon {
-        display: none;
-      }
-      .nav-links {
+    @media (min-width: 768px) {
+      nav {
         display: flex !important;
         flex-direction: row;
-        position: static;
+        gap: 20px;
         background: none;
+        padding: 0;
+        position: static;
       }
-      .nav-links li {
-        border: none;
+
+      .menu-btn {
+        display: none;
       }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- هدر -->
-  <div class="navbar">
-    <div class="navbar-title">
-      <span class="icon">💎</span>
-      <span>آیوارا</span>
-    </div>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <ul class="nav-links" id="menu">
-      <li><a href="#">صفحه اصلی</a></li>
-      <li><a href="#">فروشگاه</a></li>
-      <li><a href="#">محصولات</a></li>
-      <li><a href="tel:09169730478">تماس با ما: 09169730478</a></li>
-      <li><a href="#about">درباره ما</a></li>
-      <li><a href="#" onclick="toggleMenu()">❌ بستن منو</a></li>
-    </ul>
+<header>
+  <div class="logo">
+    <div class="logo-icon"></div>
+    <h1>آیوارا</h1>
   </div>
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <nav id="main-nav">
+    <a href="#home">صفحه اصلی</a>
+    <a href="#shop">فروشگاه</a>
+    <a href="#products">محصولات</a>
+    <a href="#contact">تماس با ما</a>
+    <a href="#about">درباره ما</a>
+    <a href="javascript:void(0);" onclick="toggleMenu()">❌ بستن منو</a>
+  </nav>
+</header>
 
-  <!-- فرم سفارش -->
-  <div class="form-container">
-    <h2>ثبت سفارش</h2>
-    <form id="form">
-      <label for="name">نام:</label>
-      <input type="text" id="name" required>
+<section id="home">
+  <h2>صفحه اصلی</h2>
+  <p>به سایت آیوارا خوش آمدید. جایی برای بهترین محصولات و خدمات!</p>
+</section>
 
-      <label for="phone">شماره تماس:</label>
-      <input type="tel" id="phone" required>
+<section id="shop">
+  <h2>فروشگاه</h2>
+  <p>به‌زودی فروشگاه حرفه‌ای فعال خواهد شد.</p>
+</section>
 
-      <label for="product">انتخاب محصول:</label>
-      <select id="product">
-        <option value="محصول ۱">محصول ۱</option>
-        <option value="محصول ۲">محصول ۲</option>
-        <option value="محصول ۳">محصول ۳</option>
-      </select>
+<section id="products">
+  <h2>محصولات</h2>
+  <ul>
+    <li>محصول ۱</li>
+    <li>محصول ۲</li>
+    <li>محصول ۳</li>
+  </ul>
+</section>
 
-      <button type="submit">ارسال سفارش</button>
-    </form>
-    <div id="successMessage">✅ سفارش با موفقیت ثبت شد!</div>
-  </div>
+<section id="contact">
+  <h2>تماس با ما</h2>
+  <p>شماره تماس: <a href="tel:09169730478">09169730478</a></p>
+</section>
 
-  <!-- درباره ما -->
-  <div class="about-box" id="about">
-    <h3>درباره آیوارا</h3>
-    <p>
-      آیوارا یک فروشگاه آنلاین خاص برای کسانی است که به دنبال کیفیت، زیبایی و تفاوت هستند. ما محصولات خود را با عشق انتخاب می‌کنیم تا بهترین تجربه را برای شما رقم بزنیم. همراه ما باشید و متفاوت بدرخشید!
-    </p>
-  </div>
+<section id="about">
+  <h2>درباره ما</h2>
+  <p>آیوارا یک وب‌سایت خلاقانه است که با هدف ارائه محصولات خاص و خدمات متفاوت ایجاد شده است. ما با طراحی حرفه‌ای و تجربه کاربری قوی در تلاشیم بهترین تجربه را برای کاربران فراهم کنیم.</p>
+</section>
 
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('open');
-    }
-
-    const form = document.getElementById("form");
-    const successMessage = document.getElementById("successMessage");
-
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      successMessage.style.display = "block";
-      form.reset();
-    });
-  </script>
+<script>
+  function toggleMenu() {
+    document.getElementById("main-nav").classList.toggle("show-menu");
+  }
+</script>
 
 </body>
 </html>

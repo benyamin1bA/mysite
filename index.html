@@ -367,4 +367,574 @@
         // Buy button functionality
         document.querySelectorAll('button').forEach(button => {
             if (button.textContent.includes('خرید')) {
-                button.addEventListener('click',
+                button.addEventListener('click',<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آیوارا - فروشگاه آنلاین</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'vazir': ['Vazir', 'Tahoma', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Vazir', Tahoma, Arial, sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .product-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        .hamburger-line { transition: all 0.3s ease; }
+        .hamburger-active .line1 { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger-active .line2 { opacity: 0; }
+        .hamburger-active .line3 { transform: rotate(-45deg) translate(7px, -6px); }
+        .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }
+        .sidebar-open { transform: translateX(0); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Hamburger Menu -->
+                <button id="hamburger" class="flex flex-col justify-center items-center w-8 h-8 space-y-1 hover:bg-gray-100 rounded-lg p-1 transition-colors">
+                    <div class="hamburger-line line1 w-6 h-0.5 bg-gray-700"></div>
+                    <div class="hamburger-line line2 w-6 h-0.5 bg-gray-700"></div>
+                    <div class="hamburger-line line3 w-6 h-0.5 bg-gray-700"></div>
+                </button>
+
+                <!-- Logo -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <h1 class="text-3xl font-bold gradient-bg bg-clip-text text-transparent">آیوارا</h1>
+                    <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">A</span>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="جستجو در آیوارا..." class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="absolute right-3 top-2.5">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Actions -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button class="p-2 hover:bg-gray-100 rounded-lg relative">
+                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+                        </svg>
+                        <span class="absolute -top-1 -left-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </button>
+                    <button class="p-2 hover:bg-gray-100 rounded-lg">
+                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar fixed right-0 top-0 h-full w-80 bg-white shadow-2xl z-40 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-xl font-bold text-gray-800">دسته‌بندی محصولات</h2>
+                <button id="closeSidebar" class="p-2 hover:bg-gray-100 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">📱</span>
+                    <span class="font-medium">موبایل و تبلت</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">💻</span>
+                    <span class="font-medium">لپ‌تاپ و کامپیوتر</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">🏠</span>
+                    <span class="font-medium">خانه و آشپزخانه</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">👕</span>
+                    <span class="font-medium">مد و پوشاک</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">🎮</span>
+                    <span class="font-medium">بازی و سرگرمی</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">📚</span>
+                    <span class="font-medium">کتاب و لوازم تحریر</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">🚗</span>
+                    <span class="font-medium">خودرو و موتورسیکلت</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">💄</span>
+                    <span class="font-medium">زیبایی و سلامت</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Hero Banner -->
+        <div class="gradient-bg rounded-2xl p-8 mb-8 text-white">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-4xl font-bold mb-4">فروش ویژه آیوارا</h2>
+                    <p class="text-xl mb-6">تا ۵۰٪ تخفیف روی محصولات منتخب</p>
+                    <button class="bg-white text-purple-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                        مشاهده محصولات
+                    </button>
+                </div>
+                <div class="text-8xl">🛍</div>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">دسته‌بندی‌های محبوب</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">📱</div>
+                    <span class="text-sm font-medium">موبایل</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">💻</div>
+                    <span class="text-sm font-medium">لپ‌تاپ</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">🏠</div>
+                    <span class="text-sm font-medium">خانه</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">👕</div>
+                    <span class="text-sm font-medium">پوشاک</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">🎮</div>
+                    <span class="text-sm font-medium">بازی</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">📚</div>
+                    <span class="text-sm font-medium">کتاب</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">🚗</div>
+                    <span class="text-sm font-medium">خودرو</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">💄</div>
+                    <span class="text-sm font-medium">زیبایی</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">محصولات پیشنهادی</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer">
+                    <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                        <span class="text-6xl">📱</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg mb-2">گوشی هوشمند آیفون ۱۵</h4>
+                        <p class="text-gray-600 text-sm mb-3">آخرین مدل با تکنولوژی پیشرفته</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">۴۵,۰۰۰,۰۰۰ تومان</span>
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                                خرید
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer">
+                    <div class="h-48 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center">
+                        <span class="text-6xl">💻</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg mb-2">لپ‌تاپ گیمینگ</h4>
+                        <p class="text-gray-600 text-sm mb-3">مناسب برای بازی و کار حرفه‌ای</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">۲۸,۰۰۰,۰۰۰ تومان</span>
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                                خرید
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer">
+                    <div class="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                        <span class="text-6xl">🎧</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg mb-2">هدفون بی‌سیم</h4>
+                        <p class="text-gray-600 text-sm mb-3">کیفیت صدای فوق‌العاده</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">۳,۵۰۰,۰۰۰ تومان</span>
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                                خرید
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer">
+                    <div class="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
+                        <span class="text-6xl">⌚</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg mb-2">ساعت هوشمند</h4>
+                        <p class="text-gray-600 text-sm mb-3">مانیتورینگ سلامت و ورزش</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">۸,۰۰۰,۰۰۰ تومان</span>
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                                خرید
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Offers -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">پیشنهادات ویژه</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gradient-to-r from-orange-400 to-red-500 rounded-xl p-6 text-white">
+                    <h4 class="text-2xl font-bold mb-2">فروش فوق‌العاده</h4>
+                    <p class="mb-4">تا ۷۰٪ تخفیف روی لوازم خانگی</p>
+                    <button class="bg-white text-red-500 px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                        مشاهده همه
+                    </button>
+                </div>
+                <div class="bg-gradient-to-r from-green-400 to-blue-500 rounded-xl p-6 text-white">
+                    <h4 class="text-2xl font-bold mb-2">ارسال رایگان</h4>
+                    <p class="mb-4">برای خریدهای بالای ۵۰۰ هزار تومان</p>
+                    <button class="bg-white text-blue-500 px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                        شروع خرید
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h5 class="text-xl font-bold mb-4 gradient-bg bg-clip-text text-transparent">آیوارا</h5>
+                    <p class="text-gray-300 mb-4">فروشگاه آنلاین معتبر با بیش از ۱۰ سال تجربه</p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="text-gray-300 hover:text-white">📧</a>
+                        <a href="#" class="text-gray-300 hover:text-white">📱</a>
+                        <a href="#" class="text-gray-300 hover:text-white">🌐</a>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="font-bold mb-4">خدمات مشتریان</h6>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">پاسخ به سوالات متداول</a></li>
+                        <li><a href="#" class="hover:text-white">رویه‌های بازگرداندن کالا</a></li>
+                        <li><a href="#" class="hover:text-white">شرایط استفاده</a></li>
+                        <li><a href="#" class="hover:text-white">حریم خصوصی</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="font-bold mb-4">راهنمای خرید</h6>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">نحوه ثبت سفارش</a></li>
+                        <li><a href="#" class="hover:text-white">رویه ارسال سفارش</a></li>
+                        <li><a href="#" class="hover:text-white">شیوه‌های پرداخت</a></li>
+                        <li><a href="#" class="hover:text-white">پیگیری سفارش</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="font-bold mb-4">تماس با ما</h6>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>📞 ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li>📧 info@ayvara.com</li>
+                        <li>📍 تهران، خیابان ولیعصر</li>
+                        <li>🕐 ۲۴ ساعته، ۷ روز هفته</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; ۱۴۰۳ آیوارا. تمامی حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const closeSidebar = document.getElementById('closeSidebar');
+
+        function openSidebar() {
+            sidebar.classList.add('sidebar-open');
+            overlay.classList.remove('hidden');
+            hamburger.classList.add('hamburger-active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebarFunc() {
+            sidebar.classList.remove('sidebar-open');
+            overlay.classList.add('hidden');
+            hamburger.classList.remove('hamburger-active');
+            document.body.style.overflow = 'auto';
+        }
+
+        hamburger.addEventListener('click', () => {
+            if (sidebar.classList.contains('sidebar-open')) {
+                closeSidebarFunc();
+            } else {
+                openSidebar();
+            }
+        });
+
+        closeSidebar.addEventListener('click', closeSidebarFunc);
+        overlay.addEventListener('click', closeSidebarFunc);
+
+        // Product card interactions
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', () => {
+                alert('محصول به سبد خرید اضافه شد!');
+            });
+        });
+
+        // Buy button functionality
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('خرید')) {
+                button.addEventListener('click',<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آیوارا - فروشگاه آنلاین</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'vazir': ['Vazir', 'Tahoma', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Vazir', Tahoma, Arial, sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .product-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        .hamburger-line { transition: all 0.3s ease; }
+        .hamburger-active .line1 { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger-active .line2 { opacity: 0; }
+        .hamburger-active .line3 { transform: rotate(-45deg) translate(7px, -6px); }
+        .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }
+        .sidebar-open { transform: translateX(0); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Hamburger Menu -->
+                <button id="hamburger" class="flex flex-col justify-center items-center w-8 h-8 space-y-1 hover:bg-gray-100 rounded-lg p-1 transition-colors">
+                    <div class="hamburger-line line1 w-6 h-0.5 bg-gray-700"></div>
+                    <div class="hamburger-line line2 w-6 h-0.5 bg-gray-700"></div>
+                    <div class="hamburger-line line3 w-6 h-0.5 bg-gray-700"></div>
+                </button>
+
+                <!-- Logo -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <h1 class="text-3xl font-bold gradient-bg bg-clip-text text-transparent">آیوارا</h1>
+                    <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">A</span>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="جستجو در آیوارا..." class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="absolute right-3 top-2.5">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Actions -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button class="p-2 hover:bg-gray-100 rounded-lg relative">
+                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+                        </svg>
+                        <span class="absolute -top-1 -left-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </button>
+                    <button class="p-2 hover:bg-gray-100 rounded-lg">
+                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar fixed right-0 top-0 h-full w-80 bg-white shadow-2xl z-40 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-xl font-bold text-gray-800">دسته‌بندی محصولات</h2>
+                <button id="closeSidebar" class="p-2 hover:bg-gray-100 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">📱</span>
+                    <span class="font-medium">موبایل و تبلت</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">💻</span>
+                    <span class="font-medium">لپ‌تاپ و کامپیوتر</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">🏠</span>
+                    <span class="font-medium">خانه و آشپزخانه</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">👕</span>
+                    <span class="font-medium">مد و پوشاک</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">🎮</span>
+                    <span class="font-medium">بازی و سرگرمی</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">📚</span>
+                    <span class="font-medium">کتاب و لوازم تحریر</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">🚗</span>
+                    <span class="font-medium">خودرو و موتورسیکلت</span>
+                </a>
+                <a href="#" class="flex items-center p-3 hover:bg-blue-50 rounded-lg transition-colors">
+                    <span class="text-2xl ml-3">💄</span>
+                    <span class="font-medium">زیبایی و سلامت</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Hero Banner -->
+        <div class="gradient-bg rounded-2xl p-8 mb-8 text-white">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-4xl font-bold mb-4">فروش ویژه آیوارا</h2>
+                    <p class="text-xl mb-6">تا ۵۰٪ تخفیف روی محصولات منتخب</p>
+                    <button class="bg-white text-purple-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                        مشاهده محصولات
+                    </button>
+                </div>
+                <div class="text-8xl">🛍</div>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">دسته‌بندی‌های محبوب</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">📱</div>
+                    <span class="text-sm font-medium">موبایل</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">💻</div>
+                    <span class="text-sm font-medium">لپ‌تاپ</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">🏠</div>
+                    <span class="text-sm font-medium">خانه</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">👕</div>
+                    <span class="text-sm font-medium">پوشاک</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">🎮</div>
+                    <span class="text-sm font-medium">بازی</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">📚</div>
+                    <span class="text-sm font-medium">کتاب</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">🚗</div>
+                    <span class="text-sm font-medium">خودرو</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer text-center">
+                    <div class="text-3xl mb-2">💄</div>
+                    <span class="text-sm font-medium">زیبایی</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">محصولات پیشنهادی</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer">
+                    <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                        <span class="text-6xl">📱</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-lg mb-2">گوشی هوشمند آیفون ۱۵</h4>
+                        <p class="text-gray-600 text-sm mb-3">آخرین مدل با تکنولوژی پیشرفته</p>
+                        <div class="flex items-center justify-between">
+1
+                <a href="#" class="flex items-center p-3 hove
